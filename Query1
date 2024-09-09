@@ -1,0 +1,66 @@
+CREATE TABLE UserRoles (
+    roleId INT PRIMARY KEY,
+    roleName VARCHAR(255)
+);
+
+CREATE TABLE Users (
+    userId INT PRIMARY KEY,
+    username VARCHAR(255),
+    email VARCHAR(255),
+    fullname VARCHAR(255),
+    password VARCHAR(255),
+    images TEXT,
+    phone VARCHAR(20),
+    status INT,
+    roleId INT,
+    FOREIGN KEY (roleId) REFERENCES UserRoles(roleId)
+);
+
+CREATE TABLE Product (
+    productId INT PRIMARY KEY,
+    productName VARCHAR(255),
+    productCode VARCHAR(255),
+    categoryId INT,
+    description TEXT,
+    price DECIMAL(10, 2),
+    stock INT,
+    images TEXT,
+    wishlist INT,
+    status INT,
+    createDate DATE,
+    sellerId INT,
+    FOREIGN KEY (sellerId) REFERENCES Seller(sellerId)
+);
+
+CREATE TABLE Seller (
+    sellerId INT PRIMARY KEY,
+    sellerName VARCHAR(255),
+    images TEXT,
+    status INT
+);
+
+CREATE TABLE Cart (
+    cartId INT PRIMARY KEY,
+    userId INT,
+    buyDate DATE,
+    status INT,
+    FOREIGN KEY (userId) REFERENCES Users(userId)
+);
+
+CREATE TABLE CartItem (
+    cartItemId INT PRIMARY KEY,
+    cartId INT,
+    productId INT,
+    quantity INT,
+    unitPrice DECIMAL(10, 2),
+    amount DECIMAL(10, 2),
+    FOREIGN KEY (cartId) REFERENCES Cart(cartId),
+    FOREIGN KEY (productId) REFERENCES Product(productId)
+);
+
+CREATE TABLE Category (
+    categoryId INT PRIMARY KEY,
+    categoryName VARCHAR(255),
+    images TEXT,
+    status INT
+);
