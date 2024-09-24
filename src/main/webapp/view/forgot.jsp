@@ -8,21 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action=/HelloWorld/login method="post">
-		<h2>Đăng nhập</h2>
+	<form action=/HelloWorld/forgot method="post">
+		<h2>Quên mật khẩu</h2>
 		<c:if test="${alert !=null}">
 			<h3 class="alert alertdanger">${alert}</h3>
 		</c:if>
 		<section>
-			<label class="input login-input">
+			<label class="input forgot-input">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fauser"></i></span> <input
 						type="text" placeholder="Tài khoản" name="username"
-						class="form-control"> <br> <input type="text"
-						placeholder="Mật khẩu" name="password" class="form-control">
-					<br> <input type="Submit" value="Submit" /> <input
-						type="checkbox" value="remember" /> Ghi nhớ đăng nhập <br> <br>
-					<li><a href="${pageContext.request.contextPath }/forgot">Quên mật khẩu</a></li>
+						class="form-control"><br>
+						<input
+						type="text" placeholder="Mật khẩu mới" name="password"
+						class="form-control"><br>
+					<input type="Submit" value="Submit" />
 				</div>
 			</label>
 		</section>
